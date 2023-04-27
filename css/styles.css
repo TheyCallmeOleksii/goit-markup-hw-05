@@ -807,7 +807,7 @@ body {
   display: inline-block;
   border: 1px solid var(--color-cornflower);
 
-  transition-property: color, background-color;
+  transition-property: color, background-color, box-shadow;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -815,7 +815,6 @@ body {
 .portfolio-btn:focus {
   color: var(--color-white);
   background-color: var(--color-ocean);
-  border: 1px solid transparent;
   border: 1px solid transparent;
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
@@ -904,6 +903,12 @@ body {
   bottom: 0;
   left: 0;
   background: rgba(46, 47, 66, 0.4);
+
+  visibility: visible;
+  opacity: 1;
+
+  transition: opacity 200ms ease, visibility 200ms ease,
+    backdrop-filter 200ms ease;
 }
 
 .backdrop.is-hidden {
@@ -924,26 +929,47 @@ body {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+
+  transform: translate(-50%, -50%) rotate(0) scale(1);
+  opacity: 1;
+
+  transition: transform 300ms linear 200ms, opacity 300ms linear 200ms;
 }
 
 .modal-button {
-  display: block;
+  display: flex;
   align-items: center;
   justify-content: center;
   margin-left: auto;
   width: 24px;
   height: 24px;
   box-sizing: border-box;
+  fill: var(--color-navy-blue);
   background-color: var(--color-cornflower);
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1);
+
+  transition-property: fill, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-button:hover,
 .modal-button:focus {
+  fill: var(--color-white);
   background-color: var(--color-ocean);
 }
 
 .modal-button:hover .modal-icon,
 .modal-button:focus .modal-icon {
   fill: var(--color-white);
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) rotate(0) translate(0.2);
+  opacity: 0;
 }
