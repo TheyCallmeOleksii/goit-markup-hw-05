@@ -774,6 +774,7 @@ body {
 
 .portfolio-element {
   display: block;
+  transition: box-shadow var(--anim-standart);
 }
 
 .portfolio-element:hover,
